@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/MikolajMielczarek/summary/static/css/main.e6c13ad2.css",
+    "main.js": "/MikolajMielczarek/summary/static/js/main.cbdf60d6.js",
+    "static/js/787.e79bb798.chunk.js": "/MikolajMielczarek/summary/static/js/787.e79bb798.chunk.js",
+    "index.html": "/MikolajMielczarek/summary/index.html",
+    "static/media/trashcan.svg": "/MikolajMielczarek/summary/static/media/trashcan.1129c53a10f3c716357028ea030e9d23.svg",
+    "main.e6c13ad2.css.map": "/MikolajMielczarek/summary/static/css/main.e6c13ad2.css.map",
+    "main.cbdf60d6.js.map": "/MikolajMielczarek/summary/static/js/main.cbdf60d6.js.map",
+    "787.e79bb798.chunk.js.map": "/MikolajMielczarek/summary/static/js/787.e79bb798.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e6c13ad2.css",
+    "static/js/main.cbdf60d6.js"
+  ]
+}
