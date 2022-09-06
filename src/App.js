@@ -9,12 +9,12 @@ import Todo from './pages/Todo';
 import FavoritePages from './pages/FavoritePages';
 import Weather from './pages/Weather';
 import About from './pages/About';
-import Register from './pages/Register';
+import Register from './pages/Registration';
 import Login from './pages/Login';
 
 function App() {
   return (
-    <div className='App'>
+    <div className='page-container'>
       <BrowserRouter>
         <Navbar />
         <Routes>

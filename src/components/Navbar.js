@@ -1,13 +1,9 @@
-import Link from 'react-router-dom'
-import { useState } from 'react'
+import { Link } from 'react-router-dom'
+import { useLogout } from '../hooks/useLogout'
 
 export default function Navbar() {
 
-    const [user, setUser] = useState(true)
-
-    const logout = () => {
-
-    }
+    const { logout } = useLogout()
 
   return (
     <nav>
@@ -34,21 +30,21 @@ export default function Navbar() {
                 <Link to="/about">AboutMe</Link>
             </li>
 
-            {!user && 
+            
                 <>
                     <li>
-                        <Link to="/register">Register</Link>
+                        <button><Link to="/register">Register</Link></button>
                     </li>
                     <li>
-                        <Link to="/login">Login</Link>
+                        <button><Link to="/login">Login</Link></button>
                     </li>
                 </>
-            }
-            {user &&
+            
+            
                 <li>
                     <button className='btn' onClick={logout}>Logout</button>
                 </li>
-            }
+            
 
         </ul>
     </nav>

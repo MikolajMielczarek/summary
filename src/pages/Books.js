@@ -5,16 +5,16 @@ import BookList from "../components/BookList"
 export default function Books() {
 
   const [data, setData] = useState(null)
-  const [isPending, setisPending] = useState(false)
+  const [isPending, setIsPending] = useState(false)
   const [error, setError] = useState(false)
 
   useEffect( () => {
-    setisPending(true)
+    setIsPending(true)
 
     projectFirestore.collection('books').get().then((snapshot) => {
       if (snapshot.empty) {
         setError('No recepies to load')
-        setisPending(false)
+        setIsPending(false)
       } else {
         let results = []
         snapshot.docs.forEach( doc => {
@@ -23,11 +23,11 @@ export default function Books() {
           results.push({ id: doc.id, ...doc.data() })
         })
         setData(results)
-        setisPending(false)
+        setIsPending(false)
       }
     }).catch( err => {
       setError(err.message)
-      setisPending(false)
+      setIsPending(false)
     })
 
   }, [])

@@ -1,6 +1,7 @@
 import { useState } from 'react'
+import { useRegistration } from '../hooks/useRegistration'
 
-export default function Register() {
+export default function Registration() {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [displayName, setDisplayName] = useState('')
@@ -8,9 +9,11 @@ export default function Register() {
     const [avatar, setAvatar] = useState(null)
     const [avatarError, setAvatarError] = useState(null)
 
+    const { register, isPending, error } = useRegistration()
 
     const handleSubmit = (e) => {
         e.preventDefault()
+        register(email, password, displayName)
     }
 
     const handleFileChange = (e) => {
@@ -34,8 +37,8 @@ export default function Register() {
     }
 
   return (
-    <form>
-        <h2>Sign up</h2>
+    <form onSubmit={handleSubmit}>
+        <h2>Registration</h2>
         <label>
             <span>email:</span>
             <input 
@@ -63,7 +66,16 @@ export default function Register() {
             value={displayName}
             />
         </label>
-        <label>
+        
+        {!isPending && <button className='btn'>Register</button>}
+        {isPending && <button className='btn' disabled>Loading</button>}
+        {error && <p>{error}</p>}
+    </form>
+      )
+}
+
+/*
+<label>
             <span>city:</span>
             <input 
             required
@@ -82,7 +94,4 @@ export default function Register() {
             {avatarError && <div className='error'>{avatarError}</div>}
 
         </label>
-        <button className='btn'>Sign up</button>
-    </form>
-      )
-}
+*/
