@@ -1,12 +1,16 @@
-import React, { useState } from 'react'
+import { useState } from "react"
+import { useLogin } from "../hooks/useLogin"
+
 
 export default function Login() {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
+    const { login, isPending, error } = useLogin()
 
-    const handleSubmit = () => {
-
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        login(email, password)
     }
 
   return (
@@ -34,7 +38,9 @@ export default function Login() {
             value={password}
             />
         </label>
-        <button className='btn'>Login</button>
+        { !isPending && <button className='btn'>Login</button>}
+        { isPending && <button className='btn' disabled>Loading</button>}
+        {error && <p>{error}</p>}
     </form>
       )
 }

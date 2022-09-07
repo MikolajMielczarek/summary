@@ -1,14 +1,28 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState, useRef } from "react"
 import { projectFirestore } from "../firebase/config"
 
 
-export const useCollection = (collection) => {
+export const useCollection = (collection, _query, _orderBy) => {
     const [documents, setDocuments] = useState(null)
     const [error, setError] = useState(null)
+
+    const query = useRef(_query).current
+    const orderBy = useRef(_orderBy).current
 
     useEffect(() => {
         let ref = projectFirestore.collection(collection)
 
+        if (query) {
+            ref = ref.where(...query)
+        }
+
+        if (orderBy) {
+            ref = ref.orderBy(...orderBy)
+        }
+        //onSnapshot - snapshot represents collection exactly in time we use it! Itwill start whenever collection is changing(add, remove, update document) - snapshot represents collection - docs represents array of documents from snapshot!
+        //doc.data() - data get data from document
+        //uid - user id
+        //id - document id
         const unsubscribe = ref.onSnapshot((snapshot) => {
             let results = []
             snapshot.docs.forEach(doc => {
@@ -22,10 +36,10 @@ export const useCollection = (collection) => {
             setError('could not fetch the data')
         })
 
-        // unsubscribe on unmount
+        // unsubscribe on unmount - clean up function
         return () => unsubscribe()
 
-    }, [collection])
+    }, [collection, query, orderBy])
 
     return { documents, error }
 }

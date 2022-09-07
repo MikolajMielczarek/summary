@@ -1,30 +1,28 @@
 import Trashcan from '../assets/trashcan.svg'
-import { projectFirestore } from "../firebase/config"
+import { useFirestore } from '../hooks/useFirestore'
 
 
 export default function BookList({ books }) {
+
+    const { deleteDocument } = useFirestore('books')
 
     if (books.length === 0) {
         return <div className="error">No books to load...</div>
     }
 
-    const handleClick = (id) => {
-        projectFirestore.collection('books').doc(id).delete()
-    }
-
     return (
-        <div className="book-list">
+        <ul className="book-list">
             {books.map(book => (
-                <div key={book.id} className={`card`}>
-                    <h3>{book.title}</h3>
-                    <p>{book.author}</p>
+                <li key={book.id} className={`card`}>
+                    <h3>{book.bookTitle}</h3>
+                    <p>{book.bookAuthor}</p>
                     <img
                         className="delete"
-                        onClick={() => handleClick(book.id)}
+                        onClick={() => deleteDocument(book.id)}
                         src={Trashcan} alt="delete icon"
                     />
-                </div>
+                </li>
             ))}
-        </div>
+        </ul>
     )
 }

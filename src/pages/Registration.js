@@ -16,7 +16,7 @@ export default function Registration() {
         register(email, password, displayName)
     }
 
-    const handleFileChange = (e) => {
+   /* const handleFileChange = (e) => {
         setAvatar(null)
         let selected = e.target.files[0]
 
@@ -35,7 +35,7 @@ export default function Registration() {
         setAvatarError(null)
         setAvatar(selected)
     }
-
+    */
   return (
     <form onSubmit={handleSubmit}>
         <h2>Registration</h2>
