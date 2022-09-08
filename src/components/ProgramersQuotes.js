@@ -3,7 +3,7 @@ import axios from '../apis/quotesMovies'
 import Refresh from '../assets/icon-refresh.svg'
 
 
-const MoviesQuotes = () => {
+const ProgramersQuotes = () => {
 
     const [quote, error, loading, refetch] = useAxios({
         axiosInstance: axios,
@@ -46,4 +46,4 @@ const MoviesQuotes = () => {
 
 }
 
-export default MoviesQuotes
+export default ProgramersQuotes

@@ -1,7 +1,16 @@
 import axios from '../apis/timeAxios'
 import useAxiosTime from '../hooks/useAxiosTime'
 
-export default function Time() {
+import { useDispatch, useSelector } from 'react-redux'
+import { getTimeData, getDataDate } from '../redux/time'
+
+
+export default function TimeRedux() {
+
+    /*
+    const { data } = useSelector((state) => state.dataForDate)
+    const dispatch = useDispatch()
+    */
 
   const [time, error, loading] = useAxiosTime({
     axiosInstance: axios,
@@ -19,11 +28,13 @@ export default function Time() {
     const timePropsHours = timeProps.getHours()
     const timePropsMin = timeProps.getMinutes()
     const timePropsSec = timeProps.getSeconds()
+
+
   return (
+        <article>
 
 
-    <article>
-            <h2>Time</h2>
+            <h2>TimeRedux</h2>
 
             {loading && <p>Loading...</p>}
 

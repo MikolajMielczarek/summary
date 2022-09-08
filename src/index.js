@@ -4,19 +4,48 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { AuthContextProvider } from './context/AuthContext';
+import store from './redux/store';
+import { Provider } from 'react-redux';
+
+import { orange, red } from "@mui/material/colors"
+
+import { ThemeProvider, createTheme } from "@mui/material"
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: "#CCC"
+    },
+    secondary: {
+      main: orange[500]
+    },
+    myCustomColor: {
+      main: red[400],
+      superDark: red[800],
+      superLight: red[100]
+    }
+  },
+  typography: {
+    myVariant: {
+      fontSize: "2.5rem",
+      color: orange[500]
+    }
+  }
+})
+
 root.render(
 
+   <Provider store={store}>
 
-    
     <AuthContextProvider>
-    
-      <App />
-
+      <ThemeProvider theme={theme}>
+        <App />
+      </ThemeProvider>
     </AuthContextProvider>
-      
-
+    
+  </Provider> 
 
 );
 

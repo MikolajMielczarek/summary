@@ -1,15 +1,18 @@
 import React from 'react'
+import Counter from '../components/Counter'
 import Jokes from '../components/Jokes'
-import MoviesQuotes from '../components/MoviesQuotes'
+import ProgramersQuotes from '../components/ProgramersQuotes'
 import Posts from '../components/Posts'
 import Time from './Time'
+import TimeRedux from './TimeRedux'
 
 export default function Home() {
   return (
 
     <main className='page-container_main main'>
+        <Counter />
         <Time />
-        <MoviesQuotes />
+        <ProgramersQuotes />
         <Jokes />
         <Posts />
         <section className='main_section'>
