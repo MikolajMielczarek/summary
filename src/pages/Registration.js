@@ -8,6 +8,8 @@ export default function Registration() {
     const [city, setCity] = useState('')
     const [avatar, setAvatar] = useState(null)
     const [avatarError, setAvatarError] = useState(null)
+    const [thumbnail, setThumbnail] = useState(null)
+    const [thumbnailError, setThumbnaiError] = useState(null)
 
     const { register, isPending, error } = useRegistration()
 

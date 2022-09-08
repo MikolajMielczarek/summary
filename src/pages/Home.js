@@ -1,10 +1,17 @@
 import React from 'react'
+import Jokes from '../components/Jokes'
+import MoviesQuotes from '../components/MoviesQuotes'
+import Posts from '../components/Posts'
+import Time from './Time'
 
 export default function Home() {
   return (
 
     <main className='page-container_main main'>
-
+        <Time />
+        <MoviesQuotes />
+        <Jokes />
+        <Posts />
         <section className='main_section'>
             <div className='main_my-data'>
 

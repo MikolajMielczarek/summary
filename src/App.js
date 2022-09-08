@@ -11,13 +11,14 @@ import Weather from './pages/Weather';
 import About from './pages/About';
 import Register from './pages/Registration';
 import Login from './pages/Login';
+
 import { useAuthContext } from './hooks/useAuthContext';
 
 function App() {
 const { authIsReady, user } = useAuthContext()
 
   return (
-    <div className='page-container'>
+    <main className='page-container'>
       {authIsReady && 
         <BrowserRouter>
           <Navbar />
@@ -37,7 +38,7 @@ const { authIsReady, user } = useAuthContext()
           </Routes>
         </BrowserRouter>
       }
-    </div>
+    </main>
   );
 }
 
