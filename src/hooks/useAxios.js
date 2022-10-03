@@ -22,7 +22,6 @@ const useAxios = (configObj) => {
         
         const fetchData = async () => {
 
-
             try{
                 const res = await axiosInstance[method.toLowerCase()](url, {
                     ...requestConfig,

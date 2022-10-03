@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const useAxiosTime = (configObj) => {
+export const useAxiosTime = (configObj) => {
 
     const {
         axiosInstance,
@@ -17,8 +17,6 @@ const useAxiosTime = (configObj) => {
         const controller = new AbortController();
         
         const fetchData = async () => {
-
-
             try{
                 const res = await axiosInstance[method.toLowerCase()](url, {
                     ...requestConfig,
@@ -36,7 +34,6 @@ const useAxiosTime = (configObj) => {
         setInterval(() => {
             fetchData()
         }, 1000)
-        
 
         //useEffect cleanup function
         return () => controller.abort()
@@ -44,7 +41,7 @@ const useAxiosTime = (configObj) => {
         //eslint-disable-next-line
     },[])
 
-    return [ response, error, loading];
+    return [ response, error, loading ];
 }
 
 export default useAxiosTime

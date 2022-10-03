@@ -1,21 +1,18 @@
 import { useEffect, useState } from 'react'
-import { useFirestore } from '../hooks/useFirestore'
+import { useFirestore } from '../../hooks/useFirestore'
 
 export default function BookForm({ uid }) {
    const [bookTitle, setBookTitle] = useState('')
    const [bookAuthor, setBookAuthor] = useState('')
-   const [bookCategory, setBookCategory] = useState('')
-   const [bookNote, setBookNote] = useState('')
+   const [bookStarRecomendation, setBookStarRecomendation] = useState('')
    const [bookRead, setBookRead] = useState(false)
-   const [bookRecomendation, setBookRecomendation] = useState(false)
-   const [bookWait, setBookWait] = useState(true)
 
    const { addDocument, response } = useFirestore('books')
 
    const resetForm = () => {
         setBookTitle('')
         setBookAuthor('')
-        setBookCategory('')
+        setBookStarRecomendation('')
    }
 
    const handleSubmit = (e) => {
@@ -24,11 +21,8 @@ export default function BookForm({ uid }) {
         uid,
         bookTitle,
         bookAuthor,
-        bookCategory,
-        bookNote,
+        bookStarRecomendation,
         bookRead,
-        bookRecomendation,
-        bookWait
     })
     resetForm()
    }
@@ -44,7 +38,7 @@ export default function BookForm({ uid }) {
   
   return (
     <form onSubmit={handleSubmit}>
-        <h2>What do I want to read?</h2>
+        <h2>To read ?</h2>
         <label>
             <span>Book title:</span>
             <input
@@ -63,14 +57,17 @@ export default function BookForm({ uid }) {
             value={bookAuthor}
             />
         </label>
-        <label>
-            <span>Book category:</span>
-            <input
-            required
-            type="text"
-            onChange={(e) => setBookCategory(e.target.value)}
-            value={bookCategory}
-            />
+        <label htmlFor="starsR">
+            <span>Stars recomendation</span>
+            <select id="starsR" name="starsR" required onChange={(e) => setBookStarRecomendation(e.target.value)} value={bookStarRecomendation} >
+                <option value="">--Choose an option--</option>
+                <option value="0" >0 - impossible to finish</option>
+                <option value="1" >1 - bad</option>
+                <option value="2" >2 - not bad not good</option>
+                <option value="3" >3 - have a good moments</option>
+                <option value="4" >4 - good</option>
+                <option value="5" >5 - must read</option>
+            </select>
         </label>
         <button>Add book to the list</button>
     </form>

@@ -1,9 +1,10 @@
 import { useState } from "react"
-import { useAuthContext } from "../hooks/useAuthContext"
-import BookList from "../components/BookList"
-import BookForm from "../components/BookForm"
+import { useAuthContext } from "../../hooks/useAuthContext"
+import BookList from "./BookList"
+import BookForm from "./BookForm"
 
-import { useCollection } from "../hooks/useCollection"
+import { useCollection } from "../../hooks/useCollection"
+import BookFormAlreadyRead from "./BookFormAlreadyRead"
 
 
 export default function Books() {
@@ -19,20 +20,20 @@ export default function Books() {
     ['createdAt', 'desc']
     )
 
-  console.log(documents)
 
   return (
 
-    <div className="books">
+    <section className="books">
       {error && <p className="error">{error}</p>}
       {isPending && <p className="loading">Loading...</p>}
       {documents &&
         <>
-          <BookList books={documents}/>
           <BookForm uid={user.uid}/>
+          <BookFormAlreadyRead uid={user.uid} />
+          <BookList books={documents}/>
         </>
       }
-    </div>
+    </section>
     
   )
 }

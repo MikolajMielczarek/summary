@@ -1,62 +1,60 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useLogout } from '../hooks/useLogout'
 import { useAuthContext } from '../hooks/useAuthContext'
 
 
 export default function Navbar() {
 
-    const { logout } = useLogout()
-
-    const { user } = useAuthContext()
+    const { logout } = useLogout();
+    const { user } = useAuthContext();
+    const navigate = useNavigate();
 
   return (
-    <nav>
-        <ul>
-            <li>
-                <Link to="/">Home</Link>
-            </li>
-            <li>
-                <Link to="/todo">Todo</Link>
-            </li>
-            <li>
-                <Link to="/books">Books</Link>
-            </li>
-            <li>
-                <Link to="/calendar">Calendar</Link>
-            </li>
-            <li>
-                <Link to="/time">Time</Link>
-            </li>
-            <li>
-                <Link to="/weather">Weather</Link>
-            </li>
-            <li>
-                <Link to="/about">AboutMe</Link>
-            </li>
-
-            
-                {!user && 
-                <>
-                    <li>
-                        <button><Link to="/register">Register</Link></button>
+    <nav className='navigation'>
+            {!user && 
+                <ul className='navigation__list'>
+                    <div className='navigation__list--container'>
+                        <li className='navigation__list-link-container navigation__list-link-container--logout'>
+                            <Link className='navigation__list-link-container-link' to="/">Home</Link>
+                        </li>
+                        <li className='navigation__list-link-container navigation__list-link-container--logout'>
+                            <Link className='navigation__list-link-container-link' to="/about">About Me</Link>
+                        </li>
+                    </div>
+                    <div className='navigation__container-regandlog'>
+                        <button className='navigation__list-btn navigation__list-btn--register' onClick={() => navigate("/register")}>Register</button>
+                        <button className='navigation__list-btn' onClick={() => navigate("/login")}>Login</button>
+                    </div>
+                </ul>
+            }
+            {user && 
+                <ul className='navigation__list'>
+                    <li className='navigation__list-link-container '>
+                        <Link className='navigation__list-link-container-link' to="/">Home</Link>
                     </li>
-                    <li>
-                        <button><Link to="/login">Login</Link></button>
+                    <li className='navigation__list-link-container'>
+                        <Link className='navigation__list-link-container-link' to="/todo">Todo</Link>
                     </li>
-                </>}
-            
-            
-                {user && 
-                <>
-                    <li>hello, {user.displayName}</li>
-                    <li>
-                        <button className='btn' onClick={logout}>Logout</button>
+                    <li className='navigation__list-link-container'>
+                        <Link className='navigation__list-link-container-link' to="/books">Books</Link>
                     </li>
-                </>
-                }
-            
-
-        </ul>
+                    <li className='navigation__list-link-container'>
+                        <Link className='navigation__list-link-container-link' to="/calendar">Calendar</Link>
+                    </li>
+                    <li className='navigation__list-link-container'>
+                        <Link className='navigation__list-link-container-link' to="/time">Time</Link>
+                    </li>
+                    <li className='navigation__list-link-container'>
+                        <Link className='navigation__list-link-container-link' to="/weather">Weather</Link>
+                    </li>
+                    <li className='navigation__list-link-container'>
+                        <Link className='navigation__list-link-container-link navigation__list-link-container--logout' to="/about">AboutMe</Link>
+                    </li>
+                    <li className='navigation__list-link-container'>login as {user.displayName}
+                    </li>
+                    <button className='navigation__list-btn' onClick={logout}>Logout</button>
+                </ul>
+            } 
     </nav>
   )
 }

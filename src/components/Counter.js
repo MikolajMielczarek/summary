@@ -1,5 +1,5 @@
-import { useDispatch, useSelector } from 'react-redux'
-import { increment, decrement, incrementByAmount, reset } from '../redux/counter'
+import { useSelector, useDispatch } from 'react-redux'
+import { increment, decrement, incrementByAmount, reset, selectCount } from '../redux/counterSlice'
 import { Button, Typography } from '@mui/material'
 import { styled } from "@mui/material/styles"
 
@@ -13,9 +13,11 @@ export default function Counter() {
     const MyCustomButtom2 = styled(Button)(({theme}) => ({
       padding: theme.spacing(5)
     }))
+    // const count = useSelector(state => state.counter.count) 
+    const count = useSelector(selectCount)
 
-    const { count } = useSelector((state) => state.counter)
     const dispatch = useDispatch()
+
     return (
     <div className='counter'>
         <Typography sx={{color:'myCustomColor.main'}} variant='myVariant'>The count is: {count}</Typography>
