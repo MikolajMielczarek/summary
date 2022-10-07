@@ -98,7 +98,7 @@ button {
 .navigation {
   width: 100%;
   padding: 30px;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -186,14 +186,150 @@ button {
       -ms-flex-align: end;
           align-items: flex-end;
 }
-.list__list {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 40px;
-  max-width: 1200px;
-  margin: 40px auto;
+.form {
+  width: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 20px;
+  font-size: 2rem;
 }
-.list__list-card {
+.form__container {
+  width: 80%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.form__container-txt {
+  padding-left: 20px;
+  width: 60%;
+}
+.form__container-input {
+  width: 40%;
+}
+.form__container-select {
+  width: 40%;
+}
+.form__btn {
+  width: 25%;
+  height: 5rem;
+}
+
+.book__bookcard {
+  position: absolute;
+  top: 0;
+  color: #fff;
+  font-size: 2rem;
+  width: 1000px;
+  height: 1000px;
+  background-color: #333;
+  opacity: 0.5;
+}
+
+.table {
+  width: 95%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 50px;
+}
+.table__container {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+.table__header {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.table__table {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+.table__table-thead {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+.table__table-thead-headers {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 40px;
+  padding: 20px 20px 0px 20px;
+}
+.table__table-thead-headers-header {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 10px;
+}
+.table__table-thead-headers-header-txt {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  color: #555;
+  font-size: 1.6rem;
+}
+.table__table-thead-headers-header-icon {
+  width: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+}
+.table__table-tbody {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+.table__table-tbody-card {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 60px;
   background: #fff;
   color: #333;
   padding: 20px;
@@ -202,25 +338,54 @@ button {
           box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.05);
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
-  position: relative;
 }
-.list__list-card-header {
+.table__table-tbody-card-txt {
+  width: 20%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   color: #555;
-  margin-bottom: 6px;
+  font-size: 1.6rem;
 }
-.list__list-card-txt {
-  color: #999;
-  font-size: 0.9em;
-}
-.list__list-card-delete {
-  position: absolute;
-  top: 10px;
-  right: 10px;
+.table__table-tbody-card-delete {
+  width: 10%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   cursor: pointer;
   -webkit-filter: invert(60%);
           filter: invert(60%);
 }
-.list__list-card:hover {
+.table__table-tbody-card:hover {
   -webkit-transform: rotate(3deg);
           transform: rotate(3deg);
+}
+
+.books {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 50px;
+}
+.books__forms {
+  width: 90%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 50px;
+}
+.books__table {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }/*# sourceMappingURL=styles.css.map */

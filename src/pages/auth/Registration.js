@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useRegistration } from '../hooks/useRegistration'
+import { useRegistration } from '../../hooks/useRegistration'
 
 export default function Registration() {
     const [email, setEmail] = useState('')

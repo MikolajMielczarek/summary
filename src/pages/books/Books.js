@@ -1,10 +1,12 @@
-import { useState } from "react"
+import React, { useState } from "react"
 import { useAuthContext } from "../../hooks/useAuthContext"
 import BookList from "./BookList"
 import BookForm from "./BookForm"
 
 import { useCollection } from "../../hooks/useCollection"
 import BookFormAlreadyRead from "./BookFormAlreadyRead"
+import { Route, Routes } from "react-router"
+import BookCard from "./BookCard"
 
 
 export default function Books() {
@@ -22,18 +24,24 @@ export default function Books() {
 
 
   return (
-
+<>
     <section className="books">
       {error && <p className="error">{error}</p>}
       {isPending && <p className="loading">Loading...</p>}
       {documents &&
         <>
-          <BookForm uid={user.uid}/>
-          <BookFormAlreadyRead uid={user.uid} />
+          <section className="books__forms">
+            <BookForm uid={user.uid}/>
+            <BookFormAlreadyRead uid={user.uid} />
+          </section>
           <BookList books={documents}/>
         </>
       }
     </section>
+    <Routes>
+      <Route path=":id" element={<BookCard books={documents} />}></Route>
+    </Routes>
+  </>
     
   )
 }

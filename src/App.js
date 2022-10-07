@@ -9,11 +9,10 @@ import Todo from './pages/Todo';
 import FavoritePages from './pages/FavoritePages';
 import Weather from './pages/Weather';
 import About from './pages/About';
-import Register from './pages/Registration';
-import Login from './pages/Login';
+import Login from './pages/auth/Login';
 import { useAuthContext } from './hooks/useAuthContext';
 import Contact from './pages/Contact';
-
+import Register from './pages/auth/Registration'
 import './css/styles.css'
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -53,15 +52,15 @@ function App() {
           <Navbar />
           <Routes>
             <Route exact path="/" element={<Home />} />
-            <Route path="/todo" element={<Todo />} />
-            <Route path="/books" element={!user ? <Navigate to="/" /> : <Books />} />
-            <Route path="/favorite-pages" element={<FavoritePages />} />
-            <Route path="/calendar" element={<Calendar />} />
-            <Route path="/time" element={<Time />} />
-            <Route path="/weather" element={<Weather />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/register"
+            <Route path="todo" element={<Todo />} />
+            <Route path="books/*" element={!user ? <Navigate to="/" /> : <Books />} />
+            <Route path="favorite-pages" element={<FavoritePages />} />
+            <Route path="calendar" element={<Calendar />} />
+            <Route path="time" element={<Time />} />
+            <Route path="weather" element={<Weather />} />
+            <Route path="about" element={<About />} />
+            <Route path="contact" element={<Contact />} />
+            <Route path="register"
               element={user ? <Navigate to="/" /> : <Register />} />
             <Route path="/login"
               element={user ? <Navigate to="/" /> : <Login />} />
