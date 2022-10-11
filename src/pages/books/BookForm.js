@@ -6,8 +6,9 @@ export default function BookForm({ uid }) {
    const [bookAuthor, setBookAuthor] = useState('')
    const [bookStarRecomendation, setBookStarRecomendation] = useState('')
    const [bookRead, setBookRead] = useState(false)
-
-   const { addDocument, response } = useFirestore('books')
+   const [bookStarAfter, setBookStarAfter] = useState('')
+   const [bookNote, setBookNote] = useState('')
+   const { addDocument } = useFirestore('books')
 
    const resetForm = () => {
         setBookTitle('')
@@ -22,20 +23,13 @@ export default function BookForm({ uid }) {
         bookTitle,
         bookAuthor,
         bookStarRecomendation,
+        bookStarAfter,
+        bookNote,
         bookRead,
     })
     resetForm()
    }
 
-   /*useEffect(() => {
-    if(response.succes) {
-        setBookTitle('')
-        setBookAuthor('')
-        setBookCategory('')
-    }
-   }, [response.succes])
-   */
-  
   return (
     <form className='form' onSubmit={handleSubmit}>
         <h2 className='form__header'>ADD to read list?</h2>

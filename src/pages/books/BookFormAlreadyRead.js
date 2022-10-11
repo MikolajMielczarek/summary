@@ -6,6 +6,7 @@ export default function BookFormAlreadyRead({ uid }) {
    const [bookAuthor, setBookAuthor] = useState('')
    const [bookStarRecomendation, setBookStarRecomendation] = useState('')
    const [bookStarAfter, setBookStarAfter] = useState('')
+   const [bookNote, setBookNote] = useState('')
    const [bookRead, setBookRead] = useState(true)
 
    const { addDocument, response } = useFirestore('books')
@@ -26,19 +27,11 @@ export default function BookFormAlreadyRead({ uid }) {
         bookAuthor,
         bookStarRecomendation,
         bookStarAfter,
+        bookNote,
         bookRead,
     })
     resetForm()
    }
-
-   /*useEffect(() => {
-    if(response.succes) {
-        setBookTitle('')
-        setBookAuthor('')
-        setBookCategory('')
-    }
-   }, [response.succes])
-   */
   
   return (
     <form className='form' onSubmit={handleSubmit}>

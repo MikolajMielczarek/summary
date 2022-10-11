@@ -222,17 +222,6 @@ button {
   height: 5rem;
 }
 
-.book__bookcard {
-  position: absolute;
-  top: 0;
-  color: #fff;
-  font-size: 2rem;
-  width: 1000px;
-  height: 1000px;
-  background-color: #333;
-  opacity: 0.5;
-}
-
 .table {
   width: 95%;
   display: -webkit-box;
@@ -347,14 +336,20 @@ button {
   color: #555;
   font-size: 1.6rem;
 }
-.table__table-tbody-card-delete {
+.table__table-tbody-card-edit {
   width: 10%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   cursor: pointer;
-  -webkit-filter: invert(60%);
-          filter: invert(60%);
+  -webkit-filter: invert(40%);
+          filter: invert(40%);
+}
+.table__table-tbody-card-edit-link {
+  width: 100%;
+}
+.table__table-tbody-card-edit-link-img {
+  width: 20px;
 }
 .table__table-tbody-card:hover {
   -webkit-transform: rotate(3deg);
@@ -388,4 +383,62 @@ button {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+}
+
+.card {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  color: whitesmoke;
+}
+.card__bgc {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  opacity: 0.6;
+}
+.card__content {
+  position: absolute;
+  top: 25%;
+  left: 25%;
+  width: 50%;
+  height: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  z-index: 1;
+}
+.card__bookcard {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.card__form {
+  width: 50%;
+}
+.card__data {
+  width: 50%;
+}
+.card__data-edit-img {
+  width: 20px;
+  cursor: pointer;
+}
+.card__data-delete-img {
+  width: 26px;
+  cursor: pointer;
 }/*# sourceMappingURL=styles.css.map */

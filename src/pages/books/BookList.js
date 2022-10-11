@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import produce from 'immer'
-import Trashcan from '../../assets/trashcan.svg'
 import Filter from '../../assets/filter-solid.svg'
+import Edit from '../../assets/pen-to-square-solid.svg'
 import { useFirestore } from '../../hooks/useFirestore'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { NavLink } from 'react-router-dom'
 
-export default function BookList({ books }) {
+export default function BookList({ books, dateFromTimestamp }) {
     
     const { deleteDocument } = useFirestore('books')
 
@@ -30,26 +30,26 @@ export default function BookList({ books }) {
         return <div className="error">No books to load...</div>
     }
 
-    const dateFromTimestamp = (time) => {
-        let dataToDisplay = [];
-        const timestampForDate = time.toDate();
-        dataToDisplay[0] = [timestampForDate.getFullYear()];
-        let month = timestampForDate.getMonth();
-        let day = timestampForDate.getUTCDate();
+    // const dateFromTimestamp = (time) => {
+    //     let dataToDisplay = [];
+    //     const timestampForDate = time.toDate();
+    //     dataToDisplay[0] = [timestampForDate.getFullYear()];
+    //     let month = timestampForDate.getMonth();
+    //     let day = timestampForDate.getUTCDate();
         
-        if(month < 10){
-            dataToDisplay[1] = [`0${month}`]
-        }else{
-            dataToDisplay[1] = [month]
-        }
-        if(day < 10){
-            dataToDisplay[2] = [`0${day}`]
-        }else{
-            dataToDisplay[2] = [day]
-        }
-        const timeDisplay = `${dataToDisplay[2]}.${dataToDisplay[1]}.${dataToDisplay[0]}`;
-        return timeDisplay;
-    }
+    //     if(month < 10){
+    //         dataToDisplay[1] = [`0${month}`]
+    //     }else{
+    //         dataToDisplay[1] = [month]
+    //     }
+    //     if(day < 10){
+    //         dataToDisplay[2] = [`0${day}`]
+    //     }else{
+    //         dataToDisplay[2] = [day]
+    //     }
+    //     const timeDisplay = `${dataToDisplay[2]}.${dataToDisplay[1]}.${dataToDisplay[0]}`;
+    //     return timeDisplay;
+    // }
 
     const filterBooksToRead = (value, state, data) => {
         const dataCopy = produce(data, (draft) => {
@@ -147,24 +147,23 @@ export default function BookList({ books }) {
                                 src={Filter} alt="filter icon"
                             />
                         </th>
-                        <th className='table__table-thead-headers-txt'>Delete</th>
+                        <th className='table__table-thead-headers-txt'>Edit</th>
                     </tr>
                 </thead>
                 <tbody className='table__table-tbody'>
                     {booksToRead && booksToRead.map(book => (
                         <tr key={book.id} className='table__table-tbody-card'>
-                            <NavLink className='table__table-tbody-card' to={book.id}>
                             <td className='table__table-tbody-card-txt'>{book.bookTitle}</td>
                             <td className='table__table-tbody-card-txt'>{book.bookAuthor}</td>
                             <td className='table__table-tbody-card-txt'>{book.bookStarRecomendation}</td>
                             <td className='table__table-tbody-card-txt'>{dateFromTimestamp(book.createdAt)}</td>
-                            </NavLink>
-                            <td className='table__table-tbody-card-delete'>
-                                <img
-                                    className='table__table-tbody-card-delete-img'
-                                    onClick={() => deleteDocument(book.id)}
-                                    src={Trashcan} alt="delete icon"
-                                />
+                            <td className='table__table-tbody-card-edit'>
+                                <NavLink className='table__table-tbody-card-edit-link' to={book.id}>
+                                    <img
+                                        className='table__table-tbody-card-edit-link-img'
+                                        src={Edit} alt="edit icon"
+                                    />
+                                </NavLink>
                             </td>
                         </tr>
                     ))}
@@ -208,7 +207,7 @@ export default function BookList({ books }) {
                                 src={Filter} alt="filter icon"
                             />
                         </th>
-                        <th className='table__table-thead-headers-txt'>Delete</th>
+                        <th className='table__table-thead-headers-txt'>Edit</th>
                     </tr>
                 </thead>
                 <tbody className='table__table-tbody'>
@@ -219,12 +218,13 @@ export default function BookList({ books }) {
                             <td className='table__table-tbody-card-txt'>{book.bookAuthor}</td>
                             <td className='table__table-tbody-card-txt'>{book.bookStarAfter}</td>
                             <td className='table__table-tbody-card-txt'>{dateFromTimestamp(book.createdAt)}</td>
-                            <td className='table__table-tbody-card-delete'>
-                                <img
-                                    className='table__table-tbody-card-delete-img'
-                                    onClick={() => deleteDocument(book.id)}
-                                    src={Trashcan} alt="delete icon"
-                                />
+                            <td className='table__table-tbody-card-edit'>
+                                <NavLink className='table__table-tbody-card-edit-link' to={book.id}>
+                                    <img
+                                        className='table__table-tbody-card-edit-link-img'
+                                        src={Edit} alt="delete icon"
+                                    />
+                                </NavLink>
                             </td>
                         </tr>
                     ))}
@@ -408,3 +408,11 @@ export default function BookList({ books }) {
 //     console.log(value)
 //     console.log(counterFilterClick)
 // }
+
+
+
+{/* <img
+                                        className='table__table-tbody-card-delete-img'
+                                        onClick={() => deleteDocument(book.id)}
+                                        src={Trashcan} alt="delete icon"
+                                    /> */}
