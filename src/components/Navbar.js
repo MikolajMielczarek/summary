@@ -33,7 +33,7 @@ export default function Navbar() {
                         <Link className='navigation__list-link-container-link' to="/">Home</Link>
                     </li>
                     <li className='navigation__list-link-container'>
-                        <Link className='navigation__list-link-container-link' to="/todo">Todo</Link>
+                        <Link className='navigation__list-link-container-link' to="/tasks">Tasks</Link>
                     </li>
                     <li className='navigation__list-link-container'>
                         <Link className='navigation__list-link-container-link' to="/books">Books</Link>

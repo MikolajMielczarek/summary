@@ -1,3 +1,5 @@
+//permission to delete alert
+
 import React, { useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router'
 import { useFirestore } from '../../hooks/useFirestore'
@@ -36,14 +38,8 @@ export default function BookCard({ books, dateFromTimestamp }) {
         }
     },[books, id])
 
-    console.log(params)
-    console.log(currentBook)
-    console.log(bookTitle)
-    console.log(response)
-
     const editHandle = () => {
         setEditPending(true);
-        console.log("działa")
     }
 
     const resetForm = () => {
@@ -68,21 +64,17 @@ export default function BookCard({ books, dateFromTimestamp }) {
             delete draft.id;
         })
 
-        const newBooks2 = {
-            ...currentBook,
-            bookTitle,
-            bookAuthor,
-            bookStarRecomendation,
-            bookStarAfter,
-            bookNote,
-            bookRead
-        }
+        // const newBooks2 = {
+        //     ...currentBook,
+        //     bookTitle,
+        //     bookAuthor,
+        //     bookStarRecomendation,
+        //     bookStarAfter,
+        //     bookNote,
+        //     bookRead
+        // }
 
-        console.log(newBooks)
-        console.log(newBooks2)
-        console.log(currentBook)
-
-        editDocument(id, newBooks2)
+        editDocument(id, newBooks)
         setEditPending(false)
         resetForm()
     }
@@ -223,7 +215,7 @@ export default function BookCard({ books, dateFromTimestamp }) {
                         <div className='card__data-edit'>
                                 <img
                                 className='card__data-edit-img'
-                                onClick = {() =>  editHandle()}
+                                onClick = {() => editHandle()}
                                 src={Edit}
                                 alt="edit" />
                         </div>
@@ -240,7 +232,8 @@ export default function BookCard({ books, dateFromTimestamp }) {
                         </div>
                         <div className='card__data-date'>
                             <p className='card__data-date-txt'>Creation date: {dateFromTimestamp(currentBook.createdAt)}</p>
-                            <p className='card__data-date-txt'>Last edit date: {dateFromTimestamp(currentBook.createdAt)}</p>
+                            {currentBook.lastEdit && <p className='card__data-date-txt'>Last edit date: {dateFromTimestamp(currentBook.lastEdit)}</p>}
+                            {!currentBook.lastEdit && <p className='card__data-date-txt'>Last edit date: never edited</p>}
                         </div>
                     </div>
                 </div>

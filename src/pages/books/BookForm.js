@@ -1,14 +1,14 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useFirestore } from '../../hooks/useFirestore'
 
 export default function BookForm({ uid }) {
+   const { addDocument } = useFirestore('books')
    const [bookTitle, setBookTitle] = useState('')
    const [bookAuthor, setBookAuthor] = useState('')
    const [bookStarRecomendation, setBookStarRecomendation] = useState('')
    const [bookRead, setBookRead] = useState(false)
    const [bookStarAfter, setBookStarAfter] = useState('')
    const [bookNote, setBookNote] = useState('')
-   const { addDocument } = useFirestore('books')
 
    const resetForm = () => {
         setBookTitle('')
@@ -36,26 +36,33 @@ export default function BookForm({ uid }) {
         <label className='form__container'>
             <span className='form__container-txt'>Book title</span>
             <input
-            className='form__container-input'
-            required
-            type="text"
-            onChange={(e) => setBookTitle(e.target.value)}
-            value={bookTitle}
+                className='form__container-input'
+                required
+                type="text"
+                onChange={(e) => setBookTitle(e.target.value)}
+                value={bookTitle}
             />
         </label>
         <label className='form__container'>
             <span className='form__container-txt'>Book author</span>
             <input
-            className='form__container-input'
-            required
-            type="text"
-            onChange={(e) => setBookAuthor(e.target.value)}
-            value={bookAuthor}
+                className='form__container-input'
+                required
+                type="text"
+                onChange={(e) => setBookAuthor(e.target.value)}
+                value={bookAuthor}
             />
         </label>
         <label className='form__container' htmlFor="starsR">
             <span className='form__container-txt'>Stars recomendation</span>
-            <select className='form__container-select' id="starsR" name="starsR" required onChange={(e) => setBookStarRecomendation(e.target.value)} value={bookStarRecomendation} >
+            <select
+                className='form__container-select'
+                id="starsR"
+                name="starsR"
+                required
+                onChange={(e) => setBookStarRecomendation(e.target.value)}
+                value={bookStarRecomendation}
+            >
                 <option className='form__container-select-option' value="">--Choose an option--</option>
                 <option className='form__container-select-option' value="0" >0 - impossible to finish</option>
                 <option className='form__container-select-option' value="1" >1 - bad</option>

@@ -5,7 +5,7 @@ import Books from './pages/books/Books';
 import Calendar from './pages/Calendar';
 import Home from './pages/Home';
 import Time from './pages/date/Time';
-import Todo from './pages/Todo';
+import Tasks from './pages/tasks/Tasks'; 
 import FavoritePages from './pages/FavoritePages';
 import Weather from './pages/Weather';
 import About from './pages/About';
@@ -52,7 +52,7 @@ function App() {
           <Navbar />
           <Routes>
             <Route exact path="/" element={<Home />} />
-            <Route path="todo" element={<Todo />} />
+            <Route path="tasks/*" element={!user ? <Navigate to="/" /> : <Tasks />} />
             <Route path="books/*" element={!user ? <Navigate to="/" /> : <Books />} />
             <Route path="favorite-pages" element={<FavoritePages />} />
             <Route path="calendar" element={<Calendar />} />

@@ -29,8 +29,8 @@ export default function Home({times, errors, loadings, getTimeFromData}) {
                 </div>
                 <div className='main__my-data'>
 
-                    <div className='main__todo'>
-                        <h2>Todo</h2>
+                    <div className='main__tasks'>
+                        <h2>Tasks</h2>
                         <p>Left: 6. ASAP: 2</p>
                         <p>Complited: 9</p>
                     </div>

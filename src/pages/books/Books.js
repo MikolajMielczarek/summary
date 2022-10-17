@@ -1,13 +1,12 @@
 import React, { useState } from "react"
 import { useAuthContext } from "../../hooks/useAuthContext"
+import { useCollection } from "../../hooks/useCollection"
+import { Route, Routes } from "react-router"
+
 import BookList from "./BookList"
 import BookForm from "./BookForm"
-
-import { useCollection } from "../../hooks/useCollection"
 import BookFormAlreadyRead from "./BookFormAlreadyRead"
-import { Route, Routes } from "react-router"
 import BookCard from "./BookCard"
-
 
 export default function Books() {
   const [isPending, setIsPending] = useState(false)
@@ -59,7 +58,8 @@ export default function Books() {
       }
     </section>
     <Routes>
-      <Route path=":id" element={<BookCard uid={user.uid} books={documents} dateFromTimestamp={dateFromTimestamp} />}></Route>
+      <Route path=":id" element={<BookCard books={documents} dateFromTimestamp={dateFromTimestamp} />}>
+      </Route>
     </Routes>
   </>
   )

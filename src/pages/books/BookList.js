@@ -30,27 +30,6 @@ export default function BookList({ books, dateFromTimestamp }) {
         return <div className="error">No books to load...</div>
     }
 
-    // const dateFromTimestamp = (time) => {
-    //     let dataToDisplay = [];
-    //     const timestampForDate = time.toDate();
-    //     dataToDisplay[0] = [timestampForDate.getFullYear()];
-    //     let month = timestampForDate.getMonth();
-    //     let day = timestampForDate.getUTCDate();
-        
-    //     if(month < 10){
-    //         dataToDisplay[1] = [`0${month}`]
-    //     }else{
-    //         dataToDisplay[1] = [month]
-    //     }
-    //     if(day < 10){
-    //         dataToDisplay[2] = [`0${day}`]
-    //     }else{
-    //         dataToDisplay[2] = [day]
-    //     }
-    //     const timeDisplay = `${dataToDisplay[2]}.${dataToDisplay[1]}.${dataToDisplay[0]}`;
-    //     return timeDisplay;
-    // }
-
     const filterBooksToRead = (value, state, data) => {
         const dataCopy = produce(data, (draft) => {
             draft.sort((a,b) => {
