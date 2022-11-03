@@ -1,10 +1,18 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router'
-import { useFirestore } from '../../../hooks/useFirestore'
+import { useFirestore } from '../../hooks/useFirestore'
+import produce from 'immer'
 
-export default function SubtaskForm({ uid, operationsOnSubtask }) {
-  const { addDocument, response } = useFirestore('tasks')
+export default function SubtaskForm({ task, id, uid, operationsOnSubtask }) {
+  // const { addDocument, response } = useFirestore('tasks')
 
+  const { editDocument, deleteDocument, response } = useFirestore('tasks')
+
+
+  const [currentTask, setCurrentTask] = useState('')
+  // const [currentSubtasks, setCurrentSubtasks] = useState([])
+
+  const [idSubtask, setIdSubtask] = useState('')
   const [subtaskName, setSubtaskName] = useState('')
   const [subtaskDescription, setSubtaskDescription] = useState('')
   const [subtaskDeadline, setSubtaskDeadline] = useState('')
@@ -16,10 +24,20 @@ export default function SubtaskForm({ uid, operationsOnSubtask }) {
   const [subtaskTimeTotal, setSubtaskTimeTotal] = useState('')
   const [subtaskTimeDone, setSubtaskTimeDone] = useState('')
   const [subtaskTimeLeft, setSubtaskTimeLeft] = useState('')
-
+  const [currentSubtask, setCurrentSubtask] = useState({})
   const navigate = useNavigate()
 
+  useEffect(() => {
+    let idSubtask = String(new Date().getTime())
+    if (task) {
+      setCurrentTask(task)
+      setIdSubtask(idSubtask)
+      // setCurrentSubtasks(task.taskSubtasks)
+    }
+  }, [task, id])
+
   const resetForm = () => {
+    // setCurrentSubtasks([])
     setSubtaskDescription('')
     setSubtaskDeadline('')
     setSubtaskPriority('')
@@ -34,8 +52,25 @@ export default function SubtaskForm({ uid, operationsOnSubtask }) {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    addDocument({
-      taskSubtasks: {
+    
+  
+    const subtask = {
+      idSubtask,
+      subtaskName,
+      subtaskDescription,
+      subtaskDeadline,
+      subtaskPriority,
+      subtaskStatus,
+      subtaskManyTotal,
+      subtaskManySpend,
+      subtaskManyLeft,
+      subtaskTimeTotal,
+      subtaskTimeDone,
+      subtaskTimeLeft
+    }
+    setCurrentSubtask(
+      {
+        idSubtask,
         subtaskName,
         subtaskDescription,
         subtaskDeadline,
@@ -48,8 +83,15 @@ export default function SubtaskForm({ uid, operationsOnSubtask }) {
         subtaskTimeDone,
         subtaskTimeLeft
       }
+    )
+
+    const newSubtask = produce(currentTask, (draft) => {
+      draft.taskSubtasks.push(subtask)
     })
+    editDocument(id, newSubtask)
+    console.log(newSubtask)
     resetForm()
+    navigate(-1)
   }
 
   return (
@@ -121,6 +163,70 @@ export default function SubtaskForm({ uid, operationsOnSubtask }) {
               <option className='form-subtask__form-container-select-option' value="3" >finished</option>
             </select>
           </label>
+          <label className='form-subtask__form-container'>
+            <span className='form-subtask__form-container-txt'>Many in total</span>
+            <input
+              className='form-subtask__form-container-input'
+              required
+              type="number"
+              onChange={(e) => setSubtaskManyTotal(e.target.value)}
+              step="1"
+              min="0"
+              value={subtaskManyTotal}
+            />
+          </label>
+          <label className='form-subtask__form-container'>
+            <span className='form-subtask__form-container-txt'>Many spend</span>
+            <input
+              className='form-subtask__form-container-input'
+              required
+              type="number"
+              onChange={(e) => {
+                setSubtaskManySpend(e.target.value)
+                setSubtaskManyLeft(subtaskManyTotal - e.target.value)
+                }
+              }
+              step="1"
+              min="0"
+              max={subtaskManyTotal}
+              value={subtaskManySpend}
+            />
+          </label>
+          <label className='form-subtask__form-container'>
+            <span className='form-subtask__form-container-txt'>Many left {subtaskManyLeft}$</span>
+          </label>
+          <label className='form-subtask__form-container'>
+            <span className='form-subtask__form-container-txt'>Work time in total in days</span>
+            <input
+              className='form-subtask__form-container-input'
+              required
+              type="number"
+              onChange={(e) => setSubtaskTimeTotal(e.target.value)}
+              step="1"
+              min="0"
+              value={subtaskTimeTotal}
+            />
+          </label>
+          <label className='form-subtask__form-container'>
+            <span className='form-subtask__form-container-txt'>Work time done in days</span>
+            <input
+              className='form-subtask__form-container-input'
+              required
+              type="number"
+              onChange={(e) => {
+                  setSubtaskTimeDone(e.target.value)
+                  setSubtaskTimeLeft(subtaskTimeTotal - e.target.value)
+                  }
+                }
+              step="1"
+              min="0"
+              max={subtaskTimeTotal}
+              value={subtaskTimeDone}
+            />
+          </label>
+          <label className='form-subtask__form-container'>
+            <span className='form-subtask__form-container-txt'>Work time left in days {subtaskTimeLeft}</span>
+          </label>
           <button className='form-subtask__form-btn'>ADD</button>
         </form>
       </div>
@@ -128,3 +234,9 @@ export default function SubtaskForm({ uid, operationsOnSubtask }) {
     </section>
   )
 }
+
+
+
+
+  // let idSubtask = toString(new Date().getTime());
+  // console.log(idSubtask)

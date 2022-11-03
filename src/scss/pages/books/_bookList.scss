@@ -33,13 +33,17 @@
           &-txt{
             width: 100%;
             display: flex;
-            color: #555;
+            color: white;
             font-size: 1.6rem;
           }
           &-icon{
             width: 20px;
             display: flex;
             align-self: flex-start;
+            filter: invert(1);
+          }
+          &-icon:hover{
+            filter: invert(0.5);
           }
         }
         

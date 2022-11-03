@@ -41,6 +41,7 @@ export const useFirestore = (collection) => {
     const addDocument = async (doc) => {
         dispatch({ type: 'IS_PENDING' })
         try {
+            
             //new firebase timestamp stored in createdAt with actual Date when we add doc
             const createdAt = timestamp.fromDate(new Date())
             const addedDocument = await ref.add({ ...doc, createdAt })
@@ -69,6 +70,7 @@ export const useFirestore = (collection) => {
         dispatch({ type: 'IS_PENDING' });
 
         try {
+          
             const lastEdit = timestamp.fromDate(new Date());
             const editedDocument = await ref.doc(id).set({ ...doc, lastEdit });
             dispatchIfNotCancelled({ type: 'ADDED_DOCUMENT', payload: editedDocument });

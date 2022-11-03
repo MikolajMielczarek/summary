@@ -12,6 +12,8 @@ html {
 body {
   font-size: 1.6rem;
   font-family: "Montserrat", sans-serif;
+  background-color: rgb(19, 25, 30);
+  color: white;
 }
 
 button {
@@ -150,10 +152,13 @@ button {
   color: #A1A3A5;
 }
 .navigation__list-link-container-link:hover {
-  color: bisque;
+  color: rgb(0, 205, 246);
+}
+.navigation__list-link-container-txt {
+  color: rgb(0, 205, 246);
 }
 .navigation__list-btn {
-  background-color: bisque;
+  background-color: rgb(0, 205, 246);
   border-radius: 5px;
   padding: 10px;
   text-transform: uppercase;
@@ -166,7 +171,7 @@ button {
 }
 .navigation__list-btn:hover {
   background-color: rgb(85, 92, 97);
-  color: bisque;
+  color: rgb(0, 205, 246);
 }
 
 .time {
@@ -212,14 +217,27 @@ button {
   width: 60%;
 }
 .form__container-input {
+  padding-left: 5px;
   width: 40%;
+}
+.form__container-input:focus, .form__container-input:hover {
+  background-color: rgb(0, 205, 246);
 }
 .form__container-select {
   width: 40%;
 }
 .form__btn {
-  width: 25%;
+  padding: 5px;
+  width: 30%;
   height: 5rem;
+  border-radius: 10px;
+  font-size: 1.3rem;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+.form__btn:hover {
+  color: white;
+  background-color: rgb(0, 205, 246);
 }
 
 .table {
@@ -292,7 +310,7 @@ button {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  color: #555;
+  color: white;
   font-size: 1.6rem;
 }
 .table__table-thead-headers-header-icon {
@@ -302,6 +320,12 @@ button {
   display: flex;
   -ms-flex-item-align: start;
       align-self: flex-start;
+  -webkit-filter: invert(1);
+          filter: invert(1);
+}
+.table__table-thead-headers-header-icon:hover {
+  -webkit-filter: invert(0.5);
+          filter: invert(0.5);
 }
 .table__table-tbody {
   width: 100%;
@@ -405,7 +429,7 @@ button {
   width: 100%;
   height: 100%;
   background-color: black;
-  opacity: 0.6;
+  opacity: 0.65;
 }
 .card__content {
   position: absolute;
@@ -431,25 +455,76 @@ button {
 .card__form {
   width: 50%;
 }
+.card__form-save-btn {
+  background: white;
+  color: black;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 15%;
+  border: none;
+}
+.card__form-save-btn:hover {
+  background: rgb(0, 205, 246);
+}
 .card__data {
   width: 50%;
 }
 .card__data-edit-img {
   width: 20px;
+  -webkit-filter: invert(1);
+          filter: invert(1);
   cursor: pointer;
 }
 .card__data-delete-img {
   width: 26px;
+  -webkit-filter: invert(1);
+          filter: invert(1);
   cursor: pointer;
 }
 
 .tasks {
+  margin-left: 20px;
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  background-color: rgb(233, 219, 176);
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background-color: rgb(19, 25, 30);
 }
+.tasks__infromations {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 30px;
+  height: 33px;
+}
+.tasks__infromations-link-img {
+  width: 30px;
+  -webkit-filter: invert(1);
+          filter: invert(1);
+}
+.tasks__infromations-link-img:hover {
+  width: 33px;
+}
+
+.list-container__list {
+  list-style: none;
+}
+.list-container__list-container-link {
+  text-decoration: none;
+}
+.list-container__list-container-link-li {
+  font-size: 2rem;
+  color: white;
+}
+.list-container__list-container-link-li:hover {
+  color: rgb(0, 205, 246);
+}
+
 .form-task {
   position: fixed;
   top: 0;
@@ -486,4 +561,178 @@ button {
       -ms-flex-direction: column;
           flex-direction: column;
   z-index: 1;
+}
+.subtasks {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: rgb(204, 171, 171);
+}
+
+.table-subtasks {
+  margin-top: 20px;
+  margin-left: 20px;
+  width: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+.table-subtasks__informations {
+  width: 80%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.table-subtasks__informations-link {
+  width: 20%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline;
+}
+.table-subtasks__informations-link-img {
+  width: 30px;
+  -webkit-filter: invert(1);
+          filter: invert(1);
+}
+.table-subtasks__informations-link-img:hover {
+  width: 33px;
+}
+.table-subtasks__container {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.table-subtasks__table {
+  width: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+.table-subtasks__table-thead {
+  width: 50%;
+}
+.table-subtasks__table-thead-headers {
+  width: 100%;
+}
+.table-subtasks__table-tbody {
+  width: 50%;
+}
+.table-subtasks__table-tbody-card {
+  width: 100%;
+}
+.table-subtasks__table-tbody-card-edit {
+  width: 50%;
+  min-width: 100px;
+}
+.table-subtasks__table-tbody-card-edit-btn {
+  width: 50px;
+  background-color: rgb(19, 25, 30);
+  border: none;
+}
+.table-subtasks__table-tbody-card-edit-btn-txt {
+  font-size: 2rem;
+  color: white;
+  font-family: "Montserrat", sans-serif;
+}
+.table-subtasks__table-tbody-card-edit-btn-txt:hover {
+  color: rgb(0, 205, 246);
+}
+
+.form-subtask {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  color: whitesmoke;
+}
+.form-subtask__bgc {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  opacity: 0.6;
+}
+.form-subtask__content {
+  position: absolute;
+  top: 25%;
+  left: 25%;
+  width: 50%;
+  height: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  z-index: 1;
+}
+.card-subtasks {
+  width: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  color: black;
+}
+.card-subtasks__content {
+  position: absolute;
+  top: 25%;
+  left: 25%;
+  height: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background-color: rgb(0, 205, 246);
+}
+.card-subtasks__card {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.card-subtasks__form {
+  width: 50%;
+}
+.card-subtasks__data {
+  width: 50%;
+}
+.card-subtasks__data-edit-img {
+  width: 20px;
+  cursor: pointer;
+}
+.card-subtasks__data-delete-img {
+  width: 26px;
+  cursor: pointer;
 }/*# sourceMappingURL=styles.css.map */

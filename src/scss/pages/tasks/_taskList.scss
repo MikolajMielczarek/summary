@@ -1,0 +1,19 @@
+.list-container{
+
+    &__list{
+        list-style: none;
+        &-container{
+
+            &-link{
+                text-decoration: none;
+                &-li{
+                    font-size: 2rem;
+                    color: white;
+                }
+                &-li:hover{
+                    color:rgb(0, 205, 246);
+                }
+            }
+        }
+    }
+}

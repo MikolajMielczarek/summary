@@ -1,7 +1,9 @@
 .tasks{
+    margin-left: 20px;
     width: 100%;
     display: flex;
-    background-color: rgb(233, 219, 176);
+    flex-direction: column;
+    background-color: rgb(19, 25, 30);
     &__subtasks{
 
     }
@@ -9,4 +11,25 @@
     &__tasks{
         
     }
+
+    &__infromations{
+        width: 100%;
+        display: flex;
+        gap: 30px;
+        height: 33px;
+        &-header{
+
+        }
+        &-link{
+
+            &-img{
+                width: 30px;
+                filter: invert(1);
+            }
+            &-img:hover{
+                width: 33px;
+            }
+        }
+    }
+    
 }

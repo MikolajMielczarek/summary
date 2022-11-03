@@ -10,27 +10,17 @@ export default function TaskForm({ uid }) {
     const [taskDeadline, setTaskDeadline] = useState('')
     const [taskPriority, setTaskPriority] = useState('')
     const [taskStatus, setTaskStatus] = useState('')
-    const [subtaskName, setSubtaskName] = useState('')
-    const [subtaskDescription, setSubtaskDescription] = useState('')
-    const [subtaskDeadline, setSubtaskDeadline] = useState('')
-    const [subtaskPriority, setSubtaskPriority] = useState('')
-    const [subtaskStatus, setSubtaskStatus] = useState('')
-    const [subtaskManyTotal, setSubtaskManyTotal] = useState('')
-    const [subtaskManySpend, setSubtaskManySpend] = useState('')
-    const [subtaskManyLeft, setSubtaskManyLeft] = useState('')
-    const [subtaskTimeTotal, setSubtaskTimeTotal] = useState('')
-    const [subtaskTimeDone, setSubtaskTimeDone] = useState('')
-    const [subtaskTimeLeft, setSubtaskTimeLeft] = useState('')
+    const [taskSubtasks, setTaskSubtasks] = useState([])
 
     const navigate = useNavigate()
 
-    const resetForm = () =>{
-        setTaskName('')
-        setTaskDescription('')
-        setTaskDeadline('')
-        setTaskPriority('')
-        setTaskStatus('')
-    }
+    // const resetForm = () =>{
+    //     setTaskName('')
+    //     setTaskDescription('')
+    //     setTaskDeadline('')
+    //     setTaskPriority('')
+    //     setTaskStatus('')
+    // }
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -41,29 +31,20 @@ export default function TaskForm({ uid }) {
             taskDeadline,
             taskPriority,
             taskStatus,
-            taskSubtasks:{
-                subtaskName,
-                subtaskDescription,
-                subtaskDeadline,
-                subtaskPriority,
-                subtaskStatus,
-                subtaskManyTotal,
-                subtaskManySpend,
-                subtaskManyLeft,
-                subtaskTimeTotal,
-                subtaskTimeDone,
-                subtaskTimeLeft
-            }
+            taskSubtasks
         })
-        resetForm()
+        
+        navigate(-1)
     }
+
+    console.log(response)
     
   return (
     <section className='form-task'>
         <div className='form-task__bgc'></div>
         <div className='form-task__content'>
             <form className='form-task__form' onSubmit={handleSubmit}>
-                <button className='form-task__form-back-btn' onClick={()=>{navigate(-1)}}>X</button>
+                <button type = "button" className='form-task__form-back-btn' onClick={()=>{navigate(-1)}}>X</button>
                 <h2 className='form-task__form-header'>NEW TASK</h2>
                 <label className='form-task__form-container'>
                     <span className='form-task__form-container-txt'>Name</span>

@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
-import { useAuthContext } from '../../../hooks/useAuthContext'
+import { useAuthContext } from '../../hooks/useAuthContext'
 import { Routes, Route } from 'react-router'
 
 import SubtaskList from './SubtaskList'
 import SubtaskCard from './SubtaskCard'
 import SubtaskForm from './SubtaskForm'
 
-export default function Subtask({ subtasks, operationsOnSubtask, uid }) {
+export default function Subtask({ task, id, uid, dateStringTimestamp }) {
 
   const [subtaskName, setSubtaskName] = useState('')
   const [subtaskDescription, setSubtaskDescription] = useState('')
@@ -19,28 +19,47 @@ export default function Subtask({ subtasks, operationsOnSubtask, uid }) {
   const [subtaskTimeTotal, setSubtaskTimeTotal] = useState('')
   const [subtaskTimeDone, setSubtaskTimeDone] = useState('')
   const [subtaskTimeLeft, setSubtaskTimeLeft] = useState('')
-
-  const [detailsSubtask, setDetailsSubtask] = useState(false)
+  const [showDetailsSubtask, setDetailsSubtask] = useState(false)
 
   return (
     <>
       <section className='subtask'>
-        <aside className='subtask__subtask'>
           <SubtaskList
-            subtasks={subtasks}
-            operationsOnSubtask={operationsOnSubtask}
+            task={task}
+            subtasks={task.taskSubtasks}
             uid={uid}
+            dateStringTimestamp={dateStringTimestamp}
           />
-        </aside>
-        {detailsSubtask && 
+        {showDetailsSubtask && 
           <aside className='tasks__content'>
-              <SubtaskCard subtasks={subtasks} operationsOnSubtask={operationsOnSubtask}/>
+              <SubtaskCard
+                subtasks={task.taskSubtasks}
+              />
           </aside>
         }
       </section>
       <Routes>
-          <Route path="task/subtask-new" element={<SubtaskForm uid={uid} operationsOnSubtask={operationsOnSubtask}/>}>
+          <Route
+            path="tasks/subtask-new"
+            element={<SubtaskForm
+                      subtasks={task.taskSubtasks}
+                      task={task}
+                      id={id}
+                      uid={uid}
+                    />}
+          >
           </Route>
+          {/* <Route
+            path=":id"
+            element={<SubtaskCard
+                      subtasks={task.taskSubtasks}
+                      task={task}
+                      id={id}
+                      uid={uid}
+                      dateStringTimestamp={dateStringTimestamp}
+                    />}
+          >
+          </Route> */}
       </Routes>
     </>
   )

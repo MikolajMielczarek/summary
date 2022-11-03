@@ -1,5 +1,6 @@
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
 import './App.css';
+import TaskForm from './pages/tasks/TaskForm';
 import Navbar from './components/Navbar';
 import Books from './pages/books/Books';
 import Calendar from './pages/Calendar';
@@ -64,7 +65,7 @@ function App() {
               element={user ? <Navigate to="/" /> : <Register />} />
             <Route path="/login"
               element={user ? <Navigate to="/" /> : <Login />} />
-            <Route path='*' element={<Navigate to='/' />} />
+            {/* <Route path='*' element={<Navigate to='/' />} /> */}
           </Routes>
         </BrowserRouter>
       }

@@ -25,7 +25,7 @@ export default function BookCard({ books, dateFromTimestamp }) {
     const [currentBook, setCurrentBook] = useState(null)
 
 
-    useEffect(()=> {
+    useEffect(() => {
         if(books){
             const newBook = books.filter(book => book.id === id)[0]
             setCurrentBook(newBook)
@@ -54,7 +54,7 @@ export default function BookCard({ books, dateFromTimestamp }) {
 
     const submitChange = (e) => {
         e.preventDefault();
-        const newBooks = produce (currentBook, (draft)=>{
+        const newBooks = produce(currentBook, (draft) => {
             draft.bookTitle = bookTitle;
             draft.bookAuthor = bookAuthor;
             draft.bookStarRecomendation = bookStarRecomendation;

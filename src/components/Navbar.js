@@ -50,7 +50,7 @@ export default function Navbar() {
                     <li className='navigation__list-link-container'>
                         <Link className='navigation__list-link-container-link navigation__list-link-container--logout' to="/about">AboutMe</Link>
                     </li>
-                    <li className='navigation__list-link-container'>login as {user.displayName}
+                    <li className='navigation__list-link-container'><p className='navigation__list-link-container-txt'>login as {user.displayName}</p>
                     </li>
                     <button className='navigation__list-btn' onClick={logout}>Logout</button>
                 </ul>

@@ -2,15 +2,14 @@ import React, { useEffect, useState } from 'react'
 import { Routes, Route } from 'react-router'
 import { useParams } from 'react-router'
 
-import Subtask from './subtask/Subtask'
-import SubtaskForm from './subtask/SubtaskForm'
+import Subtask from '../subtask/Subtask'
+import SubtaskForm from '../subtask/SubtaskForm'
 
 
 
 export default function TaskCard({ uid, tasks, error, dateStringTimestamp}) {
 
   const { id } = useParams()
-  console.log(id)
   const [currentTask, setCurrentTask] = useState(null)
 
   const [taskName, setTaskName] = useState('')
@@ -30,34 +29,7 @@ export default function TaskCard({ uid, tasks, error, dateStringTimestamp}) {
   const [subtaskTimeDone, setSubtaskTimeDone] = useState('')
   const [subtaskTimeLeft, setSubtaskTimeLeft] = useState('')
 
-  const operationsOnSubtask =
-    (
-    subtaskName,
-    subtaskDescription,
-    subtaskDeadline,
-    subtaskPriority,
-    subtaskStatus,
-    subtaskManyTotal,
-    subtaskManySpend,
-    subtaskManyLeft,
-    subtaskTimeTotal,
-    subtaskTimeDone,
-    subtaskTimeLeft
-    ) => {
-      setSubtaskName(subtaskName)
-      setSubtaskDescription(subtaskDescription)
-      setSubtaskDeadline(subtaskDeadline)
-      setSubtaskPriority(subtaskPriority)
-      setSubtaskStatus(subtaskStatus)
-      setSubtaskManyTotal(subtaskManyTotal)
-      setSubtaskManySpend(subtaskManySpend)
-      setSubtaskManyLeft(subtaskManyLeft)
-      setSubtaskTimeTotal(subtaskTimeTotal)
-      setSubtaskTimeDone(subtaskTimeDone)
-      setSubtaskTimeLeft(subtaskTimeLeft)
-    }
-
-  useEffect(()=>{
+  useEffect(() => {
     if(tasks){
       const choosenTask = tasks.filter(task => task.id === id)[0]
       setCurrentTask(choosenTask)
@@ -66,15 +38,15 @@ export default function TaskCard({ uid, tasks, error, dateStringTimestamp}) {
   },[tasks, id])
 
   return (
-    <section>
+    <section className='task-card__details details'>
 
       {currentTask && 
         <>
           <aside className='details__task'>
-
+            
           </aside>
           <aside className='details__subtasks'>
-            <Subtask subtasks={currentTask.taskSubtasks} operationsOnSubtask={operationsOnSubtask} uid={uid} />
+            <Subtask task={currentTask} id={id} uid={uid} dateStringTimestamp={dateStringTimestamp} />
           </aside>
         </>  
       }

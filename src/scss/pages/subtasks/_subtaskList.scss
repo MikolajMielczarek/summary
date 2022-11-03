@@ -1,0 +1,86 @@
+.table-subtasks{
+    margin-top: 20px;
+    margin-left: 20px;
+    width:50%;
+    display: flex;
+    flex-direction: column;
+    &__informations{
+        width: 80%;
+        display: flex;
+        &-headers{
+    
+            &-header{
+            
+            }
+        }
+        &-link{
+            width: 20%;
+            display: flex;
+            justify-content: center;
+            align-items: baseline;
+            &-img{
+                width: 30px;
+                filter: invert(1);
+            }
+            &-img:hover{
+                width: 33px;
+            }
+        }
+    }
+    &__container{
+        width: 100%;
+        display: flex;
+    }
+    &__table{
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        &-thead{
+            width: 50%;
+            &-headers{
+                width: 100%;
+                &-header{
+
+                }
+            }
+        }
+        &-tbody{
+            width: 50%;
+            &-card{
+                width: 100%;
+                &-edit{
+                    width: 50%;
+                    min-width: 100px;
+                    &-btn{
+                        width:50px;
+                        background-color: rgb(19, 25, 30);
+                        border: none;
+                        // &-img{
+                        //     width: 20px;
+                        //     filter: invert(1);
+                        // }
+                        &-txt{
+                            font-size: 2rem;
+                            color: white;
+                            font-family: 'Montserrat', sans-serif;
+                        }
+                        &-txt:hover{
+                            color: rgb(0, 205, 246);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+// &__list{
+//     width: 100%;
+//     display: flex;
+//     flex-direction: column;
+//     align-items: center;
+//     &-txt{
+//         width: 100%;
+//         display: flex;
+//     }
+// }

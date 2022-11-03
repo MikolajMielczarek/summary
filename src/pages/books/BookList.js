@@ -65,7 +65,6 @@ export default function BookList({ books, dateFromTimestamp }) {
         }else{
             setBooksAlreadyRead(dataCopy)
         }
-        console.log(dataCopy)
     }
 
     const filterList = (value, data) => {
@@ -201,7 +200,7 @@ export default function BookList({ books, dateFromTimestamp }) {
                                 <NavLink className='table__table-tbody-card-edit-link' to={book.id}>
                                     <img
                                         className='table__table-tbody-card-edit-link-img'
-                                        src={Edit} alt="delete icon"
+                                        src={Edit} alt="edit icon"
                                     />
                                 </NavLink>
                             </td>

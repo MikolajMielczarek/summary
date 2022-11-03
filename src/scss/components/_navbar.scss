@@ -32,11 +32,14 @@
                 color:#A1A3A5;
             }
             &-link:hover{
-                color:bisque;
+                color:rgb(0, 205, 246);
+            }
+            &-txt{
+                color:rgb(0, 205, 246);
             }
         }
         &-btn{
-            background-color:bisque;
+            background-color:rgb(0, 205, 246);
             border-radius: 5px;
             padding: 10px;
             text-transform: uppercase;
@@ -49,7 +52,7 @@
         }
         &-btn:hover{
             background-color:rgb(85, 92, 97);
-            color: bisque;
+            color: rgb(0, 205, 246);
         }
     }
 }

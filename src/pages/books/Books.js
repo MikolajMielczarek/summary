@@ -58,7 +58,13 @@ export default function Books() {
       }
     </section>
     <Routes>
-      <Route path=":id" element={<BookCard books={documents} dateFromTimestamp={dateFromTimestamp} />}>
+      <Route
+        path=":id"
+        element={<BookCard
+                  books={documents}
+                  dateFromTimestamp={dateFromTimestamp}
+                />}
+      >
       </Route>
     </Routes>
   </>
