@@ -43,11 +43,13 @@ export default function TaskCard({ uid, tasks, error, dateStringTimestamp}) {
       {currentTask && 
         <>
           <aside className='details__task'>
-            
+            <h2 className='details__task-header'>Name of the task: {currentTask.taskName}</h2>
           </aside>
+          <div className='details__between'></div>
           <aside className='details__subtasks'>
             <Subtask task={currentTask} id={id} uid={uid} dateStringTimestamp={dateStringTimestamp} />
           </aside>
+          <div className='details__end'></div>
         </>  
       }
 

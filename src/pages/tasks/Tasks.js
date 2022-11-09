@@ -40,6 +40,7 @@ export default function Tasks() {
               className='tasks__infromations-link-img'
               src={Plus} alt="edit icon"
             />
+            <p className='tasks__infromations-link-txt'>Create new task</p>
         </NavLink>
 
         </div>

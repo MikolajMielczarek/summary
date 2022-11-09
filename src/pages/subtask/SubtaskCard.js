@@ -26,7 +26,7 @@ export default function SubtaskCard({ idForSubtask, subtasks, task, uid, dateStr
 
   // const { id } = useParams()
   const navigate = useNavigate()
-  const params = useParams()
+  // const params = useParams()
 
   const { editDocument, deleteDocument, response } = useFirestore('tasks')
 

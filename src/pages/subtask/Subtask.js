@@ -49,17 +49,6 @@ export default function Subtask({ task, id, uid, dateStringTimestamp }) {
                     />}
           >
           </Route>
-          {/* <Route
-            path=":id"
-            element={<SubtaskCard
-                      subtasks={task.taskSubtasks}
-                      task={task}
-                      id={id}
-                      uid={uid}
-                      dateStringTimestamp={dateStringTimestamp}
-                    />}
-          >
-          </Route> */}
       </Routes>
     </>
   )

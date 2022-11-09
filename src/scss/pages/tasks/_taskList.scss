@@ -1,17 +1,25 @@
 .list-container{
-
+    width: 90%;
     &__list{
-        list-style: none;
-        &-container{
+        width: 20%;
+        list-style:none;
+        z-index: 10;
 
+        &-container{
+            line-height: 2.3rem;
             &-link{
                 text-decoration: none;
                 &-li{
+                    margin: 10px;
+                    padding: 10px;
                     font-size: 2rem;
                     color: white;
+                    background-color: rgb(43, 49, 53);
+                    border-radius: 20px;
                 }
                 &-li:hover{
                     color:rgb(0, 205, 246);
+                    background-color: rgba(46, 57, 57, 0.391);
                 }
             }
         }

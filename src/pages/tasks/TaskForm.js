@@ -33,7 +33,6 @@ export default function TaskForm({ uid }) {
             taskStatus,
             taskSubtasks
         })
-        
         navigate(-1)
     }
 

@@ -41,13 +41,11 @@ const theme = createTheme({
 root.render(
 
    <Provider store={store}>
-
     <AuthContextProvider>
       <ThemeProvider theme={theme}>
         <App />
       </ThemeProvider>
     </AuthContextProvider>
-    
   </Provider> 
 
 );

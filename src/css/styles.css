@@ -108,7 +108,7 @@ button {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  background-color: #363B3F;
+  background-color: rgb(43, 49, 53);
 }
 .navigation__list {
   width: 100%;
@@ -225,6 +225,9 @@ button {
 }
 .form__container-select {
   width: 40%;
+}
+.form__container-select:focus, .form__container-select:hover {
+  background-color: rgb(0, 205, 246);
 }
 .form__btn {
   padding: 5px;
@@ -483,7 +486,7 @@ button {
 }
 
 .tasks {
-  margin-left: 20px;
+  margin: 0px 20px 0px 20px;
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -495,12 +498,39 @@ button {
   background-color: rgb(19, 25, 30);
 }
 .tasks__infromations {
-  width: 100%;
+  padding: 0px 20px 0px 20px;
+  margin-bottom: 20px;
+  width: 50%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  gap: 30px;
-  height: 33px;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 53px;
+  background-color: rgb(43, 49, 53);
+  border-radius: 20px;
+}
+.tasks__infromations-header {
+  width: 50%;
+  letter-spacing: 2px;
+}
+.tasks__infromations-link {
+  margin-left: 60px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-decoration: none;
+}
+.tasks__infromations-link-txt {
+  padding-left: 10px;
+  color: white;
 }
 .tasks__infromations-link-img {
   width: 30px;
@@ -511,18 +541,31 @@ button {
   width: 33px;
 }
 
+.list-container {
+  width: 90%;
+}
 .list-container__list {
+  width: 20%;
   list-style: none;
+  z-index: 10;
+}
+.list-container__list-container {
+  line-height: 2.3rem;
 }
 .list-container__list-container-link {
   text-decoration: none;
 }
 .list-container__list-container-link-li {
+  margin: 10px;
+  padding: 10px;
   font-size: 2rem;
   color: white;
+  background-color: rgb(43, 49, 53);
+  border-radius: 20px;
 }
 .list-container__list-container-link-li:hover {
   color: rgb(0, 205, 246);
+  background-color: rgba(46, 57, 57, 0.391);
 }
 
 .form-task {
@@ -562,8 +605,56 @@ button {
           flex-direction: column;
   z-index: 1;
 }
-.subtasks {
+.details {
+  position: absolute;
+  top: 30%;
+  left: 27%;
   width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+.details__task {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 30%;
+  background-color: rgb(43, 49, 53);
+  letter-spacing: 2px;
+  border-radius: 20px;
+}
+.details__task-header {
+  margin: 20px;
+}
+.details__between {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 5%;
+  background-color: rgb(19, 25, 30);
+}
+.details__subtasks {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 30%;
+  background-color: rgb(43, 49, 53);
+  border-radius: 20px;
+}
+.details-end {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 25%;
+  background-color: rgb(19, 25, 30);
+}
+
+.subtasks {
+  width: 50%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -571,8 +662,7 @@ button {
 }
 
 .table-subtasks {
-  margin-top: 20px;
-  margin-left: 20px;
+  margin: 20px;
   width: 50%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -587,6 +677,9 @@ button {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+}
+.table-subtasks__informations-headers {
+  letter-spacing: 2px;
 }
 .table-subtasks__informations-link {
   width: 20%;
@@ -657,6 +750,7 @@ button {
 .form-subtask {
   position: fixed;
   top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   display: -webkit-box;
@@ -690,6 +784,29 @@ button {
       -ms-flex-direction: column;
           flex-direction: column;
   z-index: 1;
+}
+.form-subtask__form-back {
+  margin-bottom: 10px;
+  padding: 4px 6px;
+  background-color: black;
+  color: white;
+  border: 2px solid white;
+  border-radius: 50%;
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+.form-subtask__form-back:hover {
+  color: rgb(0, 205, 246);
+  border-color: rgb(0, 205, 246);
+}
+.form-subtask__form-container-input {
+  padding-left: 5px;
+}
+.form-subtask__form-container-input:focus, .form-subtask__form-container-input:hover {
+  background-color: rgb(0, 205, 246);
+}
+.form-subtask__form-container-select:focus, .form-subtask__form-container-select:hover {
+  background-color: rgb(0, 205, 246);
 }
 .card-subtasks {
   width: 50%;

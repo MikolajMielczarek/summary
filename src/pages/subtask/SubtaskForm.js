@@ -99,7 +99,7 @@ export default function SubtaskForm({ task, id, uid, operationsOnSubtask }) {
       <div className='form-subtask__bgc'></div>
       <div className='form-subtask__content'>
         <form className='form-subtask__form' onSubmit={handleSubmit}>
-          <button className='form-subtask__form-back-btn' onClick={() => { navigate(-1) }}>X</button>
+          <button className='form-subtask__form-back' onClick={() => { navigate(-1) }}>X</button>
           <h2 className='form-subtask__form-header'>NEW SUBTASK</h2>
           <label className='form-subtask__form-container'>
             <span className='form-subtask__form-container-txt'>Name</span>
